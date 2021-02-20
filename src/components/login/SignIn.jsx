@@ -18,10 +18,15 @@ class SignIn extends Component {
         e.preventDefault();
         
         const { email, password } = this.state;
-
-        const response = await api.post('/auth/autenticacao', { email, password });
-        login(response.data.token);
-        this.props.history.push('/encontros');
+        try{
+            const response = await api.post('/auth/autenticacao', { email, password });
+            login(response.data.token);
+            this.props.history.push('/encontros');
+        }catch(err){
+            const { data } = err.response;
+            alert(data.erro)
+        }
+        
     };
 
     render(){
@@ -35,7 +40,7 @@ class SignIn extends Component {
                     </div>
                     <div className="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
                         <main className="box d-flex flex-column justify-content-center align-items-center">
-                            <h1 className="mb-5">One on One</h1>
+                            <h1 className="mb-4">One on One's</h1>
                             <form onSubmit={this.handleSignIn}>
                                 <div className="form-group">
                                     <input onChange={e => this.setState({ email: e.target.value })} className="form-control" name="email" type="email" placeholder="Digite seu email..." required />
@@ -44,8 +49,8 @@ class SignIn extends Component {
                                     <input onChange={e => this.setState({ password: e.target.value })} type="password" name="password" className="form-control" placeholder="Digite sua senha..." required />
                                 </div>
                                 <div className="btn-login d-flex justify-content-between">
-                                    <Link className="btn" to="signup">Cadastrar</Link>
-                                    <button type="submit" className="btn">Entrar</button>
+                                    <Link className="btn btn-light" to="signup">Cadastrar</Link>
+                                    <button type="submit" className="btn btn-ative">Entrar</button>
                                 </div>
                             </form>
                         </main>

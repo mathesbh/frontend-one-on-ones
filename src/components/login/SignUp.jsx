@@ -12,14 +12,15 @@ class SignUp extends Component {
         name: '',
         email: '',
         password: '',
+        leaderTypes:'',
     };
 
     handleSignUp = async e => {
         e.preventDefault();
         
-        const { name, email, password } = this.state;
+        const { name, email, password, leaderTypes } = this.state;
 
-        await api.post('/auth/cadastro', { name, email, password });
+        await api.post('/auth/cadastro', { name, email, password, leaderTypes });
 
         this.props.history.push('/');
     };
@@ -35,7 +36,7 @@ class SignUp extends Component {
                     </div>
                     <div className="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
                         <main className="box d-flex flex-column justify-content-center align-items-center">
-                            <h1 className="mb-4">One on One</h1>
+                            <h1 className="mb-4">One on One's</h1>
                             <form onSubmit={this.handleSignUp}>
                                 <div className="form-group">
                                     <input onChange={e => this.setState({ name: e.target.value })} className="form-control" name="name" type="text" placeholder="Digite seu nome..." required />
@@ -46,9 +47,17 @@ class SignUp extends Component {
                                 <div className="form-group">
                                     <input onChange={e => this.setState({ password: e.target.value })} type="password" name="password" className="form-control" placeholder="Digite sua senha..." required />
                                 </div>
-                                <div className="btn-login d-flex justify-content-between">
-                                    <button type="submit" className="btn">Cadastrar</button>
-                                    <Link className="btn" to="/">Entrar</Link>
+                                <div className="form-check form-check-inline ml-2">
+                                    <input type="radio" className="form-check-input" name="leaderTypes" value="leader" checked={this.state.leaderTypes === 'leader'} onChange={e => this.setState({ leaderTypes: e.target.value })} required/>
+                                    <label htmlFor="leader" className="form-check-label">Líder</label>
+                                </div>
+                                <div className="form-check form-check-inline float-right">
+                                    <input type="radio" className="form-check-input" name="leaderTypes" value="collaborator" checked={this.state.leaderTypes === 'collaborator'} onChange={e => this.setState({ leaderTypes: e.target.value })} required/>
+                                    <label htmlFor="leader" className="form-check-label">Liderado</label>
+                                </div>
+                                <div className="btn-login d-flex justify-content-between mt-3">
+                                    <button type="submit" className="btn btn-ative">Cadastrar</button>
+                                    <Link className="btn btn-light" to="/">Entrar</Link>
                                 </div>
                             </form>
                         </main>

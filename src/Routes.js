@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import SignIn from './components/login/SignIn';
 import SignUp from './components/login/SignUp';
 import Meeting  from './components/meeting/Meeting';
+import MeetingCreate from './components/meeting/MeetingCreate';
 import { isAuthenticated } from './services/auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -24,6 +25,7 @@ const Routes = () => (
             <Route exact path='/' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <PrivateRoute path='/encontros' component={Meeting} />
+            <PrivateRoute path='/marcarEncontro' component={MeetingCreate} />
             <Route path='*' component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>

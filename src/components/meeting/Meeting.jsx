@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { MeetingList } from './MeetingList';
 
-function Meeting(){
+export default function Meeting() {
+    const [meetings, setMeetings] = useState([]);
 
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12">
-                    <h2>Encontros</h2>
-                </div>
-            </div>
-        </div>
-    )
+    const getMeeting = async () => {
+            const { data: { meetings } } = await api.get('encontros');
+
+            setMeetings(meetings);
+        };
+
+    useEffect(() => {
+        getMeeting();
+    }, []);
+    
+    return <MeetingList meetings={meetings} />
 }
-
-export default Meeting;

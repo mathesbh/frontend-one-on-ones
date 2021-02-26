@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { Navbar } from '../navbar/Navbar';
 
 export default function MeetingCreate() {
   const [users, setUsers] = useState([]);
@@ -18,28 +19,16 @@ export default function MeetingCreate() {
 
   return (
     <>
-      <nav className="navbar navbar-dark nav-bg">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                  <h5 className="nav-link text-light">Marcar encontro</h5>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
       <section className="container">
         <div className="row">
           <div className="col-sm-12">
             <div className="box-meeting mx-auto mt-4">
               <div className="list-meeting text-center pt-2">
                 <div className="btn-group pt-2">
-                  <button type="button" className="btn btn-light">Agendar reunião com </button>
+                  <button type="button" className="btn btn-light">Agendar encontro com </button>
                   <button type="button" className="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span className="sr-only">Toggle Dropdown</span>
+                    <span className="sr-only">Menu</span>
                   </button>
                   <div className="dropdown-menu">
                     {users.map((u) => (

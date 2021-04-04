@@ -20,7 +20,7 @@ class SignUp extends Component {
         
         const { name, email, password, leaderTypes } = this.state;
 
-        await api.post('/auth/cadastro', { name, email, password, leaderTypes });
+        await api.post('/auth/signup', { name, email, password, leaderTypes });
 
         this.props.history.push('/');
     };

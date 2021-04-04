@@ -6,7 +6,7 @@ export default function Meeting() {
     const [meetings, setMeetings] = useState([]);
 
     const getMeeting = async () => {
-            const { data: { meetings } } = await api.get('encontros');
+            const { data: { meetings } } = await api.get('meetings');
 
             setMeetings(meetings);
         };

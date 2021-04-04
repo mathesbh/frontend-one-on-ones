@@ -19,7 +19,7 @@ class SignIn extends Component {
         
         const { email, password } = this.state;
         try{
-            const response = await api.post('/auth/autenticacao', { email, password });
+            const response = await api.post('/auth/signin', { email, password });
             login(response.data.token);
             this.props.history.push('/encontros');
         }catch(err){

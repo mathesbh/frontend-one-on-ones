@@ -4,6 +4,10 @@ import { Navbar } from '../navbar/Navbar';
 
 export default function MeetingCreate() {
   const [users, setUsers] = useState([]);
+  const [schedule, setSchedule] = useState({
+    with: '',
+    date: '',  
+  });
 
   const getUser = async () => {
     const { data: { users } } = await api.get('/users');
@@ -16,6 +20,10 @@ export default function MeetingCreate() {
   }, []);
 
   const handleLeaderTypes = (type) => type === 'leader' ? 'Líder' : 'Liderado';
+
+  const handleSchedule = (e) => {
+    return setSchedule({with: e});
+  }
 
   return (
     <>
@@ -32,12 +40,21 @@ export default function MeetingCreate() {
                   </button>
                   <div className="dropdown-menu">
                     {users.map((u) => (
-                      <button className="dropdown-item">{u.name} | {handleLeaderTypes(u.leaderTypes)}</button>
+                      <button onClick={(e) => handleSchedule(e.target.innerText)} className="dropdown-item">{u.name} - {handleLeaderTypes(u.leaderTypes)}</button>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
+
+            <div className="box-meeting mx-auto mt-4">
+              <div className="list-meeting text-center pt-2">
+                <div className="btn-group pt-2">
+                  <h5 className="pt-2">{schedule.with}</h5>                  
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

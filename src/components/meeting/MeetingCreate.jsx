@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import api from '../../services/api';
+import React, { useState } from 'react';
 import { Navbar } from '../navbar/Navbar';
+import { useUsers } from '../hooks/useUsers';
 
 export default function MeetingCreate() {
-  const [users, setUsers] = useState([]);
-  const [schedule, setSchedule] = useState({
-    with: '',
-    date: '',  
+  const users = useUsers();
+
+  const [user, setUser] = useState({
+    name: '',
+    id: '',
   });
 
-  const getUser = async () => {
-    const { data: { users } } = await api.get('/users');
-
-    setUsers(users);
-  }
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
   const handleLeaderTypes = (type) => type === 'leader' ? 'Líder' : 'Liderado';
-
-  const handleSchedule = (e) => {
-    return setSchedule({with: e});
+  
+  const handleSetUser = (name, id) => {
+    return setUser({ name, id });
   }
 
   return (
@@ -39,8 +30,8 @@ export default function MeetingCreate() {
                     <span className="sr-only">Menu</span>
                   </button>
                   <div className="dropdown-menu">
-                    {users.map((u) => (
-                      <button onClick={(e) => handleSchedule(e.target.innerText)} className="dropdown-item">{u.name} - {handleLeaderTypes(u.leaderTypes)}</button>
+                    {users.map((u) => ( 
+                      <button onClick={(name) => handleSetUser(name.target.innerText, u._id)} className="dropdown-item">{u.name} - {handleLeaderTypes(u.leaderTypes)}</button>
                     ))}
                   </div>
                 </div>
@@ -50,7 +41,7 @@ export default function MeetingCreate() {
             <div className="box-meeting mx-auto mt-4">
               <div className="list-meeting text-center pt-2">
                 <div className="btn-group pt-2">
-                  <h5 className="pt-2">{schedule.with}</h5>                  
+                  <h5 className="pt-2">{user.name}</h5>
                 </div>
               </div>
             </div>
@@ -60,4 +51,4 @@ export default function MeetingCreate() {
       </section>
     </>
   )
-} 
+}

@@ -8,7 +8,11 @@ export default function Meeting() {
     const getMeeting = async () => {
             const { data: { meetings } } = await api.get('meetings');
 
-            setMeetings(meetings);
+            const user = localStorage.getItem('UserCurrent');
+
+            const assignedTo = meetings.filter((e) => e.assignedTo === user);
+            
+            setMeetings(assignedTo)
         };
 
     useEffect(() => {

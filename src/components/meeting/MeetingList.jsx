@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { Navbar } from '../navbar/Navbar';
-import './meeting.css'
+import './meeting.css';
 
 export const MeetingList = ({ meetings }) => {
   return (
@@ -10,14 +9,14 @@ export const MeetingList = ({ meetings }) => {
       <section className="container">
         <div className="row">
           <div className="col-md-12">
-            {meetings.map((m) => (
+            {meetings.map(e => (
               <div className="box-meeting mx-auto mt-4">
                 <div className="list-meeting text-center pt-2">
-                  <h5>Encontro com: {m.memberName}</h5>
-                  <p>Data: {m.scheduled}</p>
+                <h5>Encontro com: {e.meetWith.name}</h5>
+                  <p>Data: {e.scheduledTo}</p>
                 </div>
               </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>

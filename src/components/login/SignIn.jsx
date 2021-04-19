@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import api from '../../services/api';
-import { login } from '../../services/auth';
+import { login, user } from '../../services/auth';
 import './login.css';
 import imageMobile from './img/mobile.png';
 import imageDesk from './img/desk.png'
@@ -20,6 +20,7 @@ class SignIn extends Component {
         const { email, password } = this.state;
         try{
             const response = await api.post('/auth/signin', { email, password });
+            user(response.data.user._id);
             login(response.data.token);
             this.props.history.push('/encontros');
         }catch(err){

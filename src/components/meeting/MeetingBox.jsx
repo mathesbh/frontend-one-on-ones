@@ -1,5 +1,4 @@
 import React from 'react';
-import { Btn } from '../button/Btn';
 import { Schedule } from '../date/Schedule';
 import api from '../../services/api';
 
@@ -15,6 +14,11 @@ export const MeetingBox = ({ meeting }) => {
     return window.location.reload();
   }
 
+  const handleDelete = async (id) => {
+    await api.delete(`meetings/${id}`);
+    return window.location.reload();
+  }
+
   return (
     <div className="card m-2 text-center">
       <h5 className="card-header">Detalhes do encontro</h5>
@@ -24,9 +28,9 @@ export const MeetingBox = ({ meeting }) => {
       </div>
       <div className="card-footer">
         <div className="btn-group" role="group" aria-label="Encontro">
-          <Btn concluir={actionConcludes} id={meeting._id} btn="btn btn-success" name="Concluir" ico="fa-check-square"/>
-          <Btn id={meeting._id} btn="btn btn-primary" name="Editar" ico="fa-edit"/>
-          <Btn id={meeting._id} btn="btn btn-danger" name="Excluir" ico="fa-trash-alt"/>
+          <button onClick={() => actionConcludes(meeting._id)} className="btn btn-success">Concluir <i className="far fa-check-square"></i></button>
+          <button className="btn btn-primary">Editar <i className="far fa-edit"></i></button>
+          <button onClick={() => handleDelete(meeting._id)} className="btn btn-danger">Deletar <i className="far fa-trash-alt"></i></button>
         </div>
       </div>
     </div>

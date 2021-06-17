@@ -17,3 +17,7 @@
   background-color: #fff;
 }
 
+.card_conclude{
+  border: 3px solid #28a745;
+  border-radius: 15px;
+}

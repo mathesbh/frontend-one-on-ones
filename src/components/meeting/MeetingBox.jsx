@@ -6,7 +6,7 @@ import api from '../../services/api';
 export const MeetingBox = ({ meeting }) => {
   
   const handleConclude = () => {
-    return meeting.completed ? 'card-body bg-success text-light' : 'card-body';
+    return meeting.completed ? 'card-body card_conclude' : 'card-body';
   }
 
   const actionConcludes = async(id) => {

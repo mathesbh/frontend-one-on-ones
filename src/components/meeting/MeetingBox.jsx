@@ -29,7 +29,6 @@ export const MeetingBox = ({ meeting }) => {
       <div className="card-footer">
         <div className="btn-group" role="group" aria-label="Encontro">
           <button onClick={() => actionConcludes(meeting._id)} className="btn btn-success">Concluir <i className="far fa-check-square"></i></button>
-          <button className="btn btn-primary">Editar <i className="far fa-edit"></i></button>
           <button onClick={() => handleDelete(meeting._id)} className="btn btn-danger">Deletar <i className="far fa-trash-alt"></i></button>
         </div>
       </div>

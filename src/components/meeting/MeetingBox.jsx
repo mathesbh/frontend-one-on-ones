@@ -1,22 +1,13 @@
 import React from 'react';
 import { Schedule } from '../date/Schedule';
-import api from '../../services/api';
+import ModalConclude from '../modal/ModalConclude';
+import ModalDelete from '../modal/ModalDelete';
 
 
 export const MeetingBox = ({ meeting }) => {
   
   const handleConclude = () => {
     return meeting.completed ? 'card-body card_conclude' : 'card-body';
-  }
-
-  const actionConcludes = async(id) => {
-    await api.put(`meetings/${id}`, { completed: true });
-    return window.location.reload();
-  }
-
-  const handleDelete = async (id) => {
-    await api.delete(`meetings/${id}`);
-    return window.location.reload();
   }
 
   return (
@@ -28,8 +19,8 @@ export const MeetingBox = ({ meeting }) => {
       </div>
       <div className="card-footer">
         <div className="btn-group" role="group" aria-label="Encontro">
-          <button onClick={() => actionConcludes(meeting._id)} className="btn btn-success">Concluir <i className="far fa-check-square"></i></button>
-          <button onClick={() => handleDelete(meeting._id)} className="btn btn-danger">Deletar <i className="far fa-trash-alt"></i></button>
+          <ModalConclude buttonLabel={'Concluir'} id={meeting._id}/>
+          <ModalDelete buttonLabel={'Deletar'} id={meeting._id}/>
         </div>
       </div>
     </div>

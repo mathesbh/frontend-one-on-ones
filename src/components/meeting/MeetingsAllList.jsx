@@ -3,6 +3,7 @@ import { Navbar } from '../navbar/Navbar';
 import { MeetingsAllItem } from './MeetingsAllItem';
 import { useMeetings } from '../hooks/useMeetingsAll';
 import { useUsers } from '../hooks/useUsers';
+import MeetingEmpty from '../meeting/MeetingEmpty';
 
 export const MeetingsAllList = () => {
   const meetings = useMeetings();
@@ -19,11 +20,11 @@ export const MeetingsAllList = () => {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            {meetings.map(m => (
+            {meetings.length > 0 ? meetings.map(m => (
               <div key={m._id}>
                 <MeetingsAllItem meeting={m} handleName={handleNameUser}/>
               </div>
-            ))}
+            )) : <MeetingEmpty />}
           </div>
         </div>
       </div>

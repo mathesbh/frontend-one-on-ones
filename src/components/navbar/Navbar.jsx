@@ -17,6 +17,9 @@ export const Navbar = () => (
           <Link className="nav-link" to="/marcarEncontro">Agendar</Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/todosEncontros">Todos os Encontros</Link>
+        </li>
+        <li className="nav-item">
           <Link onClick={logout} className="nav-link" to="/">Sair</Link>
         </li>
       </ul>

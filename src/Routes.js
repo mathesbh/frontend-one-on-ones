@@ -4,6 +4,7 @@ import SignIn from './components/login/SignIn';
 import SignUp from './components/login/SignUp';
 import Meeting  from './components/meeting/Meeting';
 import MeetingCreate from './components/meeting/MeetingCreate';
+import { MeetingsAllList } from '../src/components/meeting/MeetingsAllList';
 import { isAuthenticated } from './services/auth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -26,6 +27,7 @@ const Routes = () => (
             <Route path='/signup' component={SignUp} />
             <PrivateRoute path='/encontros' component={Meeting} />
             <PrivateRoute path='/marcarEncontro' component={MeetingCreate} />
+            <PrivateRoute path='/todosEncontros' component={MeetingsAllList} />
             <Route path='*' component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>

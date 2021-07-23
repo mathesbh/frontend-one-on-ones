@@ -2,17 +2,16 @@ import { useState, useEffect} from 'react';
 import api from '../../services/api';
 
 export const useUsers = () => {
-  const [users, setUsers] = useState([]);
+  const [stateUsers, stateSetUsers] = useState([]);
 
   const getUser = async () => {
     const { data: { users } } = await api.get('users');
-
-    setUsers(users);
+    stateSetUsers(users);
   }
 
   useEffect(() => {
     getUser();
   }, []);
 
-  return users;
+  return stateUsers;
 }

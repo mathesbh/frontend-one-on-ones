@@ -10,8 +10,8 @@ export const MeetingsAllList = () => {
   const users = useUsers();
 
   const handleNameUser = (id) => {
-    const user = users.filter(u => u._id === id);
-    return user[0].name;
+      const [{ name }] = users.filter(u => u._id === id);
+      return name;
   };
 
   return(

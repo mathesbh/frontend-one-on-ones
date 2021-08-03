@@ -11,7 +11,7 @@ export const useUsers = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [stateUsers]);
 
   return stateUsers;
 }

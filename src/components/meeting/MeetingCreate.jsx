@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Navbar } from '../navbar/Navbar';
 import { useUsers } from '../hooks/useUsers';
 import DateTimePicker from 'react-datetime-picker';
@@ -62,7 +62,9 @@ return (
                 </button>
                 <div className="dropdown-menu">
                   {users.map((u) => (
-                    <button onClick={(name) => handleSetUser(name.target.innerText, u._id)} className="dropdown-item">{u.name} - {handleLeaderTypes(u.leaderTypes)}</button>
+                    <Fragment key={u._id}>
+                      <button onClick={(name) => handleSetUser(name.target.innerText, u._id)} className="dropdown-item">{u.name} - {handleLeaderTypes(u.leaderTypes)}</button>
+                    </Fragment>
                   ))}
                 </div>
               </div>

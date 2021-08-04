@@ -10,8 +10,8 @@ export const MeetingsAllList = () => {
   const users = useUsers();
 
   const handleNameUser = (id) => {
-      const [{ name }] = users.filter(u => u._id === id);
-      return name;
+    const { name } = users.find(u => u._id === id);
+    return name;
   };
 
   return(
@@ -20,11 +20,11 @@ export const MeetingsAllList = () => {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            {meetings.length > 0 ? meetings.map(m => (
+            {meetings.length < 0 ? <MeetingEmpty /> : meetings.map(m => (
               <div key={m._id}>
                 <MeetingsAllItem meeting={m} handleName={handleNameUser}/>
               </div>
-            )) : <MeetingEmpty />}
+            ))}
           </div>
         </div>
       </div>

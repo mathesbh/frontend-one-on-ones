@@ -39,7 +39,7 @@ export default function MeetingCreate() {
       if(status ===201){
         alert('Encontro agendado com sucesso!');
         
-        return history.push('/encontros');
+        return history.push('/encontroCom');
       }
     } catch (err) {
       const { data } = err.response;

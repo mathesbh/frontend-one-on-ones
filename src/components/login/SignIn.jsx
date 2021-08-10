@@ -22,7 +22,7 @@ class SignIn extends Component {
             const response = await api.post('/auth/signin', { email, password });
             user(response.data.user._id);
             login(response.data.token);
-            this.props.history.push('/encontros');
+            this.props.history.push('/marcarEncontro');
         }catch(err){
             const { data } = err.response;
             alert(data.erro)

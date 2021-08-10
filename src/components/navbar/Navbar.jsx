@@ -11,10 +11,13 @@ export const Navbar = () => (
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/encontros">Encontros</Link>
+          <Link className="nav-link" to="/marcarEncontro">Agendar </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/marcarEncontro">Agendar</Link>
+          <Link className="nav-link" to="/encontroCom">Encontro com</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/agendadoPor">Agendado por</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/todosEncontros">Todos os Encontros</Link>
